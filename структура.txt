@@ -48,7 +48,7 @@ C:\Scripts\AD\create_user_ad.ps1
 │   │   │   ├── user_service.py                  # Логика создания пользователя (валидация, генерация пароля, подготовка параметров)
 │   │   │   ├── ad_client.py                     # Вызов PowerShell на DC через WinRM (авторизация, отправка команд)
 │   │   │   ├── mongo_client.py                  # Работа с MongoDB (загрузка/чтение структуры отделов, менеджеров, групп)
-│   │   │   ├── teams_notifier.py                # Отправка сообщений в Microsoft Teams через webhook
+│   │   │   ├── + teams_notifier.py                # Отправка сообщений в Microsoft Teams через webhook
 │   │   │   └── + password_generator.py          # Класс для генерации сложных паролей
 │   │   ├── utils/
 │   │   │   ├── logger.py                        # Логгирование и обработка ошибок
