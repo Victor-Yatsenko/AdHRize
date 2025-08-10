@@ -30,14 +30,14 @@ C:\Scripts\AD\create_user_ad.ps1
 
 /project-root
 │
-├── frontend/
+├── client/
 │   ├── Dockerfile                               # Сборка образа фронтенда (Flet + Nginx)
-│   ├── app.py                                   # Flet-приложение — UI для HR с формой
+│   ├── +- app.py                                   # Flet-приложение — UI для HR с формой
 │   ├── requirements.txt                         # Зависимости Python для фронтенда (Flet и пр.)
 │   ├── nginx.conf                               # Конфигурация Nginx для отдачи UI и проксирования API запросов
 │   └── static/                                  # Статичные файлы (если есть)
 │
-├── backend/
+├── server/
 │   ├── Dockerfile                               # Сборка образа бекенда (Python FastAPI + MongoDB клиент + WinRM клиент)
 │   ├── app/
 │   │   ├── main.py                              # Точка входа FastAPI приложения, роуты API
