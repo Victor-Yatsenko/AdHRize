@@ -1,6 +1,5 @@
-import pymsteams, os
-from dotenv import load_dotenv
-
+import pymsteams
+from app.config import TEAMS_WEBHOOK_URL
 
 FullName = "Іван Петренко"
 FirstNameEN = "Ivan"
@@ -10,9 +9,7 @@ Title = "Розробник"
 AccountPassword = "Pa$$w0rd123"
 
 
-load_dotenv()
-teams_webhook_url = os.getenv("TEAMS_WEBHOOK_URL")
-teams_message = pymsteams.connectorcard(teams_webhook_url)
+teams_message = pymsteams.connectorcard(TEAMS_WEBHOOK_URL)
 
 message = f"""\
 **✅ В AD створено нового користувача**\n

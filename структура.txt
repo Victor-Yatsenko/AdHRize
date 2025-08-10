@@ -43,12 +43,12 @@ C:\Scripts\AD\create_user_ad.ps1
 │   │   ├── main.py                              # Точка входа FastAPI приложения, роуты API
 │   │   ├── models.py                            # Pydantic-модели для валидации данных API
 │   │   ├── schemas.py                           # Определение схем запросов/ответов
-│   │   ├── config.py                            # Чтение конфигурации из .env
+│   │   ├── +- config.py                            # Чтение конфигурации из .env
 │   │   ├── services/ 
 │   │   │   ├── user_service.py                  # Логика создания пользователя (валидация, генерация пароля, подготовка параметров)
 │   │   │   ├── ad_client.py                     # Вызов PowerShell на DC через WinRM (авторизация, отправка команд)
 │   │   │   ├── mongo_client.py                  # Работа с MongoDB (загрузка/чтение структуры отделов, менеджеров, групп)
-│   │   │   ├── + teams_notifier.py                # Отправка сообщений в Microsoft Teams через webhook
+│   │   │   ├── +- teams_notifier.py                # Отправка сообщений в Microsoft Teams через webhook
 │   │   │   └── + password_generator.py          # Класс для генерации сложных паролей
 │   │   ├── utils/
 │   │   │   ├── logger.py                        # Логгирование и обработка ошибок
