@@ -1,7 +1,8 @@
 import flet as ft
 import json
 
-
+LOGIN = "admin"
+PASSWORD = "12345"
 def section(content):
     return ft.Container(
         border=ft.border.all(2, "#0c0909"),
@@ -15,6 +16,23 @@ def main(page: ft.Page):
     page.theme_mode = ft.ThemeMode.LIGHT
     page.title = "Форма HR Новий працівник"
     page.horizontal_alignment='center'
+
+    # --------------------------------------- Авторизація ---------------------------------------------------------
+    login_input    = ft.TextField(label="Введіть логін", width=300)
+    password_input = ft.TextField(label="Введіть пароль", password=True, can_reveal_password=True, width=300)
+    error_text     = ft.Text("", color="red", visible=False)
+
+    def login_click(e):
+        if login_input.value == LOGIN and password_input.value == PASSWORD:
+            page.clean()
+            page.add(ft.Row(controls=[form_container], alignment=ft.MainAxisAlignment.CENTER))
+        else:
+            error_text.value = "Логин або пароль введено невірно!"
+            error_text.visible = True
+            page.update()
+
+    login_btn = ft.ElevatedButton("Увійти", on_click=login_click)
+    # ---------------------------------------------------------------------------------------------------------------
     
     def on_save(e):
         data = {
@@ -31,7 +49,7 @@ def main(page: ft.Page):
         page.update()
     
     # -------------------------------------------- body --------------------------------------------------------------
-    title        = ft.Text("Новий працівник",               size=50, weight=ft.FontWeight.BOLD)
+    title        = ft.Text(           "Новий працівник",    size=50, weight=ft.FontWeight.BOLD)
     full_name_ua = ft.TextField(label="ПІБ (Кирилицею)",    width=500)
     full_name_en = ft.TextField(label="ПІБ (Латиницею)",    width=500)
     phone        = ft.TextField(label="Телефон",            width=500)
@@ -44,7 +62,7 @@ def main(page: ft.Page):
         options=[
             ft.dropdownm2.Option("Варіант 1"),
             ft.dropdownm2.Option("Операційний департамент"),
-            ft.dropdownm2.Option("Варіант 3")
+            ft.dropdownm2.Option("Варіант 3"),
         ]
     )
     
@@ -59,7 +77,7 @@ def main(page: ft.Page):
     )
 
     save_btn = ft.ElevatedButton(
-        text="Зберегти",
+        text="Створити",
         style = ft.ButtonStyle(text_style=ft.TextStyle(size=24, letter_spacing=5, weight=ft.FontWeight.BOLD),),
         width=200, height=50, on_click=on_save, color="#000000", bgcolor="#1dc054")
 
@@ -87,7 +105,16 @@ def main(page: ft.Page):
     )
 
     page.add(
-        ft.Row(controls=[form_container], 
-        alignment=ft.MainAxisAlignment.CENTER))
+        ft.Column(
+            [
+                ft.Text("Авторизація", size=24, weight=ft.FontWeight.BOLD),
+                login_input,
+                password_input,
+                error_text,
+                login_btn
+            ],
+            alignment=ft.MainAxisAlignment.CENTER,
+            horizontal_alignment=ft.CrossAxisAlignment.CENTER
+        ))
 
 ft.app(target=main, view=ft.WEB_BROWSER)
