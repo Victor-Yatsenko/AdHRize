@@ -1,5 +1,5 @@
 import pymsteams
-from app.config import TEAMS_WEBHOOK_URL
+from config import TEAMS_WEBHOOK_URL
 
 FullName = "Іван Петренко"
 FirstNameEN = "Ivan"

@@ -1,8 +1,8 @@
 import flet as ft
-import json
+import requests
+from server.config import CLIENT_LOGIN, CLIENT_PASSWORD
 
-LOGIN = "admin"
-PASSWORD = "12345"
+
 def section(content):
     return ft.Container(
         border=ft.border.all(2, "#0c0909"),
@@ -23,7 +23,7 @@ def main(page: ft.Page):
     error_text     = ft.Text("", color="red", visible=False)
 
     def login_click(e):
-        if login_input.value == LOGIN and password_input.value == PASSWORD:
+        if login_input.value == CLIENT_LOGIN and password_input.value == CLIENT_PASSWORD:
             page.clean()
             page.add(ft.Row(controls=[form_container], alignment=ft.MainAxisAlignment.CENTER))
         else:
@@ -36,17 +36,17 @@ def main(page: ft.Page):
     
     def on_save(e):
         data = {
-            "full_name_ua": full_name_ua.value,
-            "full_name_en": full_name_en.value,
-            "phone":        phone.value,
-            "title_ua":     title_ua.value,
-            "title_en":     title_en.value,
-            "department":   dept_dpd.value,
-            "manager":      mgr_dpd.value
+            "FullNameUA":       full_name_ua.value,
+            "FullNameEN":       full_name_en.value,
+            "Phone":            phone.value,
+            "Title":            f"{title_en.value} | {title_ua.value}",
+            "DepartmentName":   dept_dpd.value,
+            "ManagerName":      mgr_dpd.value
         }
-        # пока просто показываем, но здесь можно отправить в API/БД/файл
-        result_text.value = json.dumps(data, ensure_ascii=False, indent=2)
+
+        response = requests.post("http://127.0.0.1:8081/save", json=data)
         page.update()
+        return response
     
     # -------------------------------------------- body --------------------------------------------------------------
     title        = ft.Text(           "Новий працівник",    size=50, weight=ft.FontWeight.BOLD)
@@ -117,4 +117,4 @@ def main(page: ft.Page):
             horizontal_alignment=ft.CrossAxisAlignment.CENTER
         ))
 
-ft.app(target=main, view=ft.WEB_BROWSER)
+ft.app(target=main, view=ft.WEB_BROWSER, port=8550)
