@@ -1,16 +1,18 @@
 import flet as ft
-
+import requests
 
 class Form:
     def __init__(self):
         self.title = ft.Text("Новий працівник",    size=50, weight=ft.FontWeight.BOLD)
         self.fields_config = [
-            {"key": "full_name_ua", "label": "ПІБ (Кирилицею)"},
-            {"key": "full_name_en", "label": "ПІБ (Латиницею)"},
+            {"key": "full_name_UA", "label": "ПІБ (Кирилицею)"},
+            {"key": "full_name_EN", "label": "ПІБ (Латиницею)"},
             {"key": "phone",        "label": "Телефон"},
-            {"key": "title_ua",     "label": "Посада українською"},
-            {"key": "title_en",     "label": "Посада англійською"},
+            {"key": "title_UA",     "label": "Посада українською"},
+            {"key": "title_EN",     "label": "Посада англійською"},
         ]
+
+        # self.inputs = {}
 
         self.text = {
             f["key"]: ft.TextField(label=f["label"], width=500)
@@ -71,12 +73,26 @@ class Form:
             padding=10,
             content=content
         )
+    
 
-
+    # def on_save(self, e, page: ft.Page):
+    #     # пример: собрать все данные в строку
+    #     values = {k: v.value for k, v in self.text.items()}
+    #     self.result_text.value = f"Збережено: {values}"
+    #     page.update()
     def on_save(self, e, page: ft.Page):
-        # пример: собрать все данные в строку
-        values = {k: v.value for k, v in self.text.items()}
-        self.result_text.value = f"Збережено: {values}"
+        data = {
+            "FullNameUA":       self.text["full_name_UA"].value,
+            "FullNameEN":       self.text["full_name_EN"].value,
+            "Phone":            self.text["phone"]       .value,
+            "Title":            f"{self.text["title_EN"] .value} | {self.text["title_UA"].value}",
+            "DepartmentName":   self.dept_dpd            .value,
+            "ManagerName":      self.mgr_dpd             .value
+        }
+        # self.result_text.value = f"Збережено: {data}"
+        # page.update()
+        response = requests.post("http://", json=data)
         page.update()
-        
+        return response
+
 f = Form()

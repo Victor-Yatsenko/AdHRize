@@ -1,5 +1,5 @@
 import flet as ft
-# from content import autorization
+
 from client.content import autorization
 
 
