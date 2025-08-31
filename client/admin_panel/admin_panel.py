@@ -1,20 +1,27 @@
 import flet as ft
 from .section_of_admin_panel import settings
-# from .. import autorization
+from .. import autorization
 
-class AdminPanel():
+class AdminPanel:
+    def __init__(self, page: ft.Page, on_logout):
+        self.page = page
+        self.on_logout = on_logout
+
     def build(self):
         return ft.Row(
             controls=[
                 side_bar.side_bar(),
                 # settings.content.content_area
+                # Content.content_area
                 content.content_area
+                
             ]
         )
 
 class SideBar(ft.NavigationRail):
     def __init__(self):
         super().__init__()
+        # self.page = page
 
     def side_bar(self):
         return ft.Container(
@@ -51,7 +58,8 @@ class SideBar(ft.NavigationRail):
                         icon          = ft.Icon(ft.Icons.EXIT_TO_APP,        color = "#eaeaea"),
                         selected_icon = ft.Icon(ft.Icons.EXIT_TO_APP,        color = "#000000"),
                         label_content = ft.Text("Вихід",                     color = "#eaeaea"),
-                        # on_change     = content.change_content
+                        # on_change     = content.content_area.on_click=
+                        
                     )
                 ],
                 on_change = content.change_content
@@ -62,7 +70,7 @@ class SideBar(ft.NavigationRail):
     
 class Content():
     def __init__(self):
-        # self.page = page
+        # self.on_logout = on_logout
         self.content_area = ft.Container(
             expand=True,
             content=ft.Column([
@@ -89,6 +97,8 @@ class Content():
                 settings.settings.settings()
             ])
         # elif index == 3:
+        #     content.content_area.content = self.on_logout
+        # elif index == 3:
         #     self.page.clean()
         #     self.page.add(ft.Row(
         #         controls=[autorization.Autorization(self.page)],
@@ -99,7 +109,7 @@ class Content():
 
         self.content_area.update()
 
-content  = Content()
+
 
 # class Content():
 #     def __init__(self):
@@ -131,6 +141,6 @@ content  = Content()
 #             ])
 #         self.content_area.update()
 
-a        = AdminPanel()
+# a        = AdminPanel()
 side_bar = SideBar()
-# content  = Content()
+content  = Content()

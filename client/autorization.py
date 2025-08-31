@@ -5,9 +5,9 @@ from server.config import CLIENT_LOGIN, CLIENT_PASSWORD, ADMIN_LOGIN, ADMIN_PASS
 
 
 class Autorization:
-    def __init__(self, page: ft.Page):
+    def __init__(self, page: ft.Page, on_login):
         self.page = page
-
+        self.on_login = on_login
         # self.CLIENT_LOGIN = "u"
         # self.CLIENT_PASSWORD = "1"
 
@@ -44,7 +44,8 @@ class Autorization:
             and self.password_input.value == ADMIN_PASSWORD
         ):
             self.page.clean()
-            self.page.add(ft.Row(expand=True, controls=[admin_panel.a.build()], alignment=ft.MainAxisAlignment.START))
+            # self.page.add(ft.Row(expand=True, controls=[admin_panel.a.build()], alignment=ft.MainAxisAlignment.START))
+            self.page.add(ft.Row(expand=True, controls=[admin_panel.AdminPanel.build(self)], alignment=ft.MainAxisAlignment.START))
         else:
             self.error_text.value = "Логин або пароль введено невірно!"
             self.error_text.visible = True
