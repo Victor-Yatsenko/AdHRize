@@ -2,7 +2,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 import subprocess
 from config import OPEN_PORT, TEAMS_WEBHOOK_URL, REMOTE_SERVER, USER_NAME, USER_PASSWORD, PATCH_TO_SCRIPT
-import winrm
+# import winrm
 
 
 class RequestHandler(BaseHTTPRequestHandler):

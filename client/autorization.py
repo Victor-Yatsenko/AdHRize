@@ -1,5 +1,6 @@
 import flet as ft
-from client.content import admin_panel, form
+from .admin_panel import admin_panel
+from client import form
 from server.config import CLIENT_LOGIN, CLIENT_PASSWORD, ADMIN_LOGIN, ADMIN_PASSWORD
 
 

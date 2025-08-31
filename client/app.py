@@ -1,6 +1,6 @@
 import flet as ft
 
-from client.content import autorization
+from . import autorization
 
 
 def main(page: ft.Page):
