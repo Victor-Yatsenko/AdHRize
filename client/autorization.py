@@ -5,14 +5,10 @@ from server.config import CLIENT_LOGIN, CLIENT_PASSWORD, ADMIN_LOGIN, ADMIN_PASS
 
 
 class Autorization:
-    def __init__(self, page: ft.Page, on_login):
+    def __init__(self, page: ft.Page, on_login = None, on_logout = None):
         self.page = page
         self.on_login = on_login
-        # self.CLIENT_LOGIN = "u"
-        # self.CLIENT_PASSWORD = "1"
-
-        # self.ADMIN_LOGIN = "a"
-        # self.ADMIN_PASSWORD = "1"
+        self.on_logout = on_logout
 
         self.login_input    = ft.TextField(label="Введіть логін", width=300)
         self.password_input = ft.TextField(label="Введіть пароль", password=True, can_reveal_password=True, width=300)
@@ -44,8 +40,10 @@ class Autorization:
             and self.password_input.value == ADMIN_PASSWORD
         ):
             self.page.clean()
-            # self.page.add(ft.Row(expand=True, controls=[admin_panel.a.build()], alignment=ft.MainAxisAlignment.START))
-            self.page.add(ft.Row(expand=True, controls=[admin_panel.AdminPanel.build(self)], alignment=ft.MainAxisAlignment.START))
+            panel = admin_panel.AdminPanel(self.page, self.on_login)
+            side_bar = admin_panel.SideBar()
+            content = admin_panel.Content(self.page)
+            self.page.add(ft.Row(expand=True, controls=[panel.build(side_bar, content)], alignment=ft.MainAxisAlignment.START))
         else:
             self.error_text.value = "Логин або пароль введено невірно!"
             self.error_text.visible = True
