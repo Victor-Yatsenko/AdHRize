@@ -1,5 +1,6 @@
 import flet as ft
 from .section_of_admin_panel import settings
+from .section_of_admin_panel import main_section
 from .. import autorization
 
 class AdminPanel:
@@ -54,15 +55,17 @@ class SideBar(ft.NavigationRail):
             ),
         )
     
-class Content():
+class Content:
     def __init__(self, page: ft.Page, on_login = None):
         self.page = page
         self.on_login = on_login
         self.content_area = ft.Container(
             expand=True,
             content=ft.Column([
-                ft.Text("Это главная панель", size=25),
-                ft.ElevatedButton("Кнопка на главной")
+                # ft.Text("Это главная панель", size=25),
+                # ft.ElevatedButton("Кнопка на главной")
+                # main_section.MainSection.main_section()
+                main_section.main_section.main_section()
             ])
         )
 
@@ -71,8 +74,9 @@ class Content():
 
         if index == 0:
             self.content_area.content = ft.Column([
-                ft.Text("Это главная панель", size=25),
-                ft.ElevatedButton("Кнопка на главной")
+                # ft.Text("Это главная панель", size=25),
+                # ft.ElevatedButton("Кнопка на главной")
+                main_section.main_section.main_section()
             ])
         elif index == 1:
             self.content_area.content = ft.Column([

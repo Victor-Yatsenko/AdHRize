@@ -60,7 +60,7 @@ class Settings:
         fiel.disabled = not checkbox.value
         fiel.update()
 
-
+    
     def teams(self):
         return ft.Container(
             content=ft.Row([
@@ -89,36 +89,3 @@ class Settings:
 
 
 settings = Settings()
-
-# class Content():
-#     def __init__(self):
-#         self.content_area = ft.Container(
-#             expand=True,
-#             content=ft.Column([
-#                 ft.Text("Это главная панель", size=25),
-#                 ft.ElevatedButton("Кнопка на главной")
-#             ])
-#         )
-        
-#     def change_content(self, e: ft.ControlEvent):
-#         index = e.control.selected_index
-
-#         if index == 0:
-#             content.content_area.content = ft.Column([
-#                 ft.Text("Это главная панель", size=25),
-#                 ft.ElevatedButton("Кнопка на главной")
-#             ])
-#         elif index == 1:
-#             content.content_area.content = ft.Column([
-#                 ft.Text("Пользователи", size=25),
-#                 ft.Switch(label="Включить кого-то")
-#             ])
-#         elif index == 2:
-#             content.content_area.content = ft.Column([
-#                 settings.settings()
-#             ])
-#         # elif index == 3:
-#         #     content.content_area.content =
-#         self.content_area.update()
-
-# content  = Content()
