@@ -33,19 +33,19 @@ class Autorization:
             self.login_input.value        == CLIENT_LOGIN
             and self.password_input.value == CLIENT_PASSWORD
         ):
-            self.page.clean()
-            self.page.add(ft.Row(controls=[form.f.form], alignment=ft.MainAxisAlignment.CENTER))
+            e.page.clean()
+            e.page.add(ft.Row(controls=[form.f.form], alignment=ft.MainAxisAlignment.CENTER))
         elif (
             self.login_input.value        == ADMIN_LOGIN
             and self.password_input.value == ADMIN_PASSWORD
         ):
-            self.page.clean()
+            e.page.clean()
             panel = admin_panel.AdminPanel(self.page, self.on_login)
             side_bar = admin_panel.SideBar()
             content = admin_panel.Content(self.page)
-            self.page.add(ft.Row(expand=True, controls=[panel.build(side_bar, content)], alignment=ft.MainAxisAlignment.START))
+            e.page.add(ft.Row(expand=True, controls=[panel.build(side_bar, content)], alignment=ft.MainAxisAlignment.START))
         else:
             self.error_text.value = "Логин або пароль введено невірно!"
             self.error_text.visible = True
-            self.page.update()
+            e.page.update()
 

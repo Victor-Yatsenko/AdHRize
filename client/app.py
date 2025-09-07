@@ -9,6 +9,7 @@ def show_autorization(page: ft.Page):
     page.add(autoriz.view)
 
 
+
 # def return_to_autorization(page: ft.Page):
 #     page.clean()
 #     autorization = admin_panel.AdminPanel(page, on_logout=lambda: show_autorization(page))

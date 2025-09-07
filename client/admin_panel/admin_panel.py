@@ -1,6 +1,6 @@
 import flet as ft
 from .section_of_admin_panel import settings
-from .section_of_admin_panel import main_section
+from client.admin_panel.section_of_admin_panel import main_section
 from .. import autorization
 
 class AdminPanel:
@@ -62,9 +62,6 @@ class Content:
         self.content_area = ft.Container(
             expand=True,
             content=ft.Column([
-                # ft.Text("Это главная панель", size=25),
-                # ft.ElevatedButton("Кнопка на главной")
-                # main_section.MainSection.main_section()
                 main_section.main_section.main_section()
             ])
         )
@@ -74,8 +71,6 @@ class Content:
 
         if index == 0:
             self.content_area.content = ft.Column([
-                # ft.Text("Это главная панель", size=25),
-                # ft.ElevatedButton("Кнопка на главной")
                 main_section.main_section.main_section()
             ])
         elif index == 1:
@@ -89,8 +84,8 @@ class Content:
             ])
         elif index == 3:
             panel = autorization.Autorization(self.page, self.on_login)
-            self.page.clean()
-            self.page.add(panel.view)
+            e.page.clean()
+            e.page.add(panel.view)
             return
 
         self.content_area.update()

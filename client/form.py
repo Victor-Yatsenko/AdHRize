@@ -75,24 +75,26 @@ class Form:
         )
     
 
-    # def on_save(self, e, page: ft.Page):
-    #     # пример: собрать все данные в строку
-    #     values = {k: v.value for k, v in self.text.items()}
-    #     self.result_text.value = f"Збережено: {values}"
-    #     page.update()
-    def on_save(self, e, page: ft.Page):
-        data = {
-            "FullNameUA":       self.text["full_name_UA"].value,
-            "FullNameEN":       self.text["full_name_EN"].value,
-            "Phone":            self.text["phone"]       .value,
-            "Title":            f"{self.text["title_EN"] .value} | {self.text["title_UA"].value}",
-            "DepartmentName":   self.dept_dpd            .value,
-            "ManagerName":      self.mgr_dpd             .value
-        }
-        # self.result_text.value = f"Збережено: {data}"
+    def on_save(self, e):
+        # пример: собрать все данные в строку
+        values = {k: v.value for k, v in self.text.items()}
+        self.result_text.value = f"Збережено: {values}"
         # page.update()
-        response = requests.post("http://", json=data)
-        page.update()
-        return response
+        e.page.update()
+    # def on_save(self, e):
+    #     data = {
+    #         "FullNameUA":       self.text["full_name_UA"].value,
+    #         "FullNameEN":       self.text["full_name_EN"].value,
+    #         "Phone":            self.text["phone"]       .value,
+    #         "Title":            f"{self.text["title_EN"] .value} | {self.text["title_UA"].value}",
+    #         "DepartmentName":   self.dept_dpd            .value,
+    #         "ManagerName":      self.mgr_dpd             .value
+    #     }
+    #     # self.result_text.value = f"Збережено: {data}"
+    #     # page.update()
+    #     response = requests.post("http://", json=data)
+    #     # page.update()
+    #     e.page.update()
+    #     return response
 
 f = Form()

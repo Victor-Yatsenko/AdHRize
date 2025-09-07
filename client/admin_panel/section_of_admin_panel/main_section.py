@@ -1,8 +1,10 @@
 import flet as ft
-from ..section_of_admin_panel.add_new_form import AddNewForm
+from client.admin_panel.section_of_admin_panel.add_new_form import AddNewForm
+
 
 class MainSection:
     def __init__(self):
+        # self.page = page
         self.add_new_form = ft.Container(
             ft.ElevatedButton(
                 content=ft.Row(
@@ -14,15 +16,17 @@ class MainSection:
                 ),
                 style = ft.ButtonStyle(text_style=ft.TextStyle(size=24,)),
                 color="#FFFFFF", bgcolor="#000000", height=50, width= 220,
-                # on_click=lambda e: self.test(e, page=self.page)
+                on_click=self.click_add_new_form_button
             ),
         )
         self.field_search_form = ft.TextField(label="Пошук", width=500)
 
 
-    def test(self, e, page: ft.Page):
-        page.clean()
-        page.add(ft.Row(controls=[AddNewForm()], alignment=ft.MainAxisAlignment.CENTER))
+    def click_add_new_form_button(self, e: ft.ControlEvent):
+        e.page.clean()
+        viev = AddNewForm(e.page)
+        e.page.add(viev.addNewForm)
+
 
     def main_section(self):
         return ft.Container(
@@ -32,7 +36,7 @@ class MainSection:
                 spacing= 250,
                 controls=[
                     ft.Column([
-                        self.add_new_form,
+                        self.add_new_form
                     ],),
                     
                     ft.Column([
