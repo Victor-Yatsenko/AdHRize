@@ -4,7 +4,6 @@ from client.admin_panel.section_of_admin_panel.add_new_form import AddNewForm
 
 class MainSection:
     def __init__(self):
-        # self.page = page
         self.add_new_form = ft.Container(
             ft.ElevatedButton(
                 content=ft.Row(
