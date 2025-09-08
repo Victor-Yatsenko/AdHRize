@@ -34,11 +34,10 @@ class AddNewForm:
             on_click=self.toggle_elements
             
         )
-
         self.elements = ft.SegmentedButton(
             visible=False,
             selected=[],
-            on_change=self.handle_change,
+            on_change=self.change_add_elements,
             allow_empty_selection=True,
             segments=[
                 ft.Segment(
@@ -47,9 +46,11 @@ class AddNewForm:
                     icon=ft.Icon(ft.Icons.CHECK_CIRCLE)
                 ),
                 ft.Segment(
+                    # value=self.add_elements(index=0),
                     value="2",
                     label=ft.Text("Текст"),
-                    icon=ft.Icon(ft.Icons.TEXT_FIELDS)
+                    icon=ft.Icon(ft.Icons.TEXT_FIELDS),
+                    
                 ),
                 ft.Segment(
                     value="3",
@@ -59,22 +60,16 @@ class AddNewForm:
             ],
         )
    
-        self.add_new_form = ft.Column(
-            [
-                self.back_button,
-                self.name_form,
-                self.start_add_element_button,
-                self.elements
-            ]
+        self.add_new_form = ft.Container(
+            ft.Column(
+                [
+                    self.back_button,
+                    self.name_form,
+                    self.start_add_element_button,
+                    self.elements
+                ]
+            )
         )
-
-    def handle_change(self, e):
-        print("on_change data : " + str(e.data))
-
-
-    def toggle_elements(self, e):
-        self.elements.visible = not self.elements.visible 
-        self.elements.update()
 
 
     def back_to_main_section(self, e: ft.ControlEvent):
@@ -82,3 +77,46 @@ class AddNewForm:
         from client.admin_panel.admin_panel import AdminPanel, SideBar, Content
         viev = AdminPanel(e)
         e.page.add(viev.build(side_bar=SideBar(), content=Content(e)))
+
+
+    def toggle_elements(self, e):
+        self.elements.visible = not self.elements.visible 
+        self.elements.update()
+
+
+    def change_add_elements(self, e):
+        print("on_change data : " + str(e.data))
+
+
+    # def add_elements(self, index):
+    #     if index == 0:
+    #         x = ft.Container(
+    #             content=ft.Column(
+    #                 controls=[
+    #                     ft.TextField(
+    #                         value="Питання"
+    #                     ),
+    #                     ft.TextField(
+    #                         value="Напишіть відповідь"
+    #                     )
+    #                 ]
+    #             )
+    #         )
+    #         return self.page.add(x)
+            # return ft.Container(
+            #     content=[
+            #         ft.TextField(
+            #             value="Питання"
+            #         ),
+            #         ft.TextField(
+            #             value="Напишіть відповідь"
+            #         )
+            #     ]
+            # )
+        # self.text_question = ft.TextField(
+        #     value="Питання"
+        # )
+        # self.text_ansver = ft.TextField(
+        #     value="Напишіть відповідь"
+        # )
+
