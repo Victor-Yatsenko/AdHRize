@@ -23,9 +23,9 @@ def route_change(e: ft.RouteChangeEvent):
             e.page.add(ft.Row(controls=[form.f.form], alignment=ft.MainAxisAlignment.CENTER))
 
         case "/admin":
-            panel = admin_panel.AdminPanel(e.page, e)
+            panel    = admin_panel.AdminPanel(e.page, e)
             side_bar = admin_panel.SideBar()
-            content = admin_panel.Content(e.page)
+            content  = admin_panel.Content(e.page)
             e.page.add(panel.build(side_bar, content))
 
         case "/admin/add_new_form":
