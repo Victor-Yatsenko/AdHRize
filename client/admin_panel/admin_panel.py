@@ -1,7 +1,7 @@
 import flet as ft
 from .section_of_admin_panel import settings
 from client.admin_panel.section_of_admin_panel import main_section
-from .. import autorization
+
 
 class AdminPanel:
     def __init__(self, page: ft.Page, on_login = None):
@@ -64,16 +64,14 @@ class Content:
             expand=True,
             content=ft.Column([
                 main_section.main_section.main_section
-
             ])
         )
 
     def change_content(self, e: ft.ControlEvent):
         index = e.control.selected_index
-
         if index == 0:
             self.content_area.content = ft.Column([
-                main_section.main_section.main_section
+                main_section.main_section.main_section,
             ])
         elif index == 1:
             self.content_area.content = ft.Column([
@@ -85,9 +83,7 @@ class Content:
                 settings.settings.settings()
             ])
         elif index == 3:
-            panel = autorization.Autorization(self.page, self.on_login)
-            e.page.clean()
-            e.page.add(panel.view)
+            e.page.go("/")
             return
 
         self.content_area.update()

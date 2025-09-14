@@ -1,6 +1,4 @@
 import flet as ft
-from .admin_panel import admin_panel
-from client import form
 from server.config import CLIENT_LOGIN, CLIENT_PASSWORD, ADMIN_LOGIN, ADMIN_PASSWORD
 
 
@@ -10,10 +8,11 @@ class Autorization:
         self.on_login = on_login
         self.on_logout = on_logout
 
+
         self.login_input    = ft.TextField(label="Введіть логін", width=300)
         self.password_input = ft.TextField(label="Введіть пароль", password=True, can_reveal_password=True, width=300)
         self.error_text     = ft.Text("", color="red", visible=False)
-        self.login_btn = ft.ElevatedButton("Увійти", on_click=self.login_click)
+        self.login_btn      = ft.ElevatedButton("Увійти", on_click=self.login_click)
 
         self.view = ft.Column(
             [
@@ -33,17 +32,12 @@ class Autorization:
             self.login_input.value        == CLIENT_LOGIN
             and self.password_input.value == CLIENT_PASSWORD
         ):
-            e.page.clean()
-            e.page.add(ft.Row(controls=[form.f.form], alignment=ft.MainAxisAlignment.CENTER))
+            e.page.go("/form")
         elif (
             self.login_input.value        == ADMIN_LOGIN
             and self.password_input.value == ADMIN_PASSWORD
         ):
-            e.page.clean()
-            panel = admin_panel.AdminPanel(self.page, self.on_login)
-            side_bar = admin_panel.SideBar()
-            content = admin_panel.Content(self.page)
-            e.page.add(ft.Row(expand=True, controls=[panel.build(side_bar, content)], alignment=ft.MainAxisAlignment.START))
+            e.page.go("/admin")
         else:
             self.error_text.value = "Логин або пароль введено невірно!"
             self.error_text.visible = True

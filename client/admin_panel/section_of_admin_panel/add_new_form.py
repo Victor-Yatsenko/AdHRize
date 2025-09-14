@@ -73,10 +73,8 @@ class AddNewForm:
 
 
     def back_to_main_section(self, e: ft.ControlEvent):
-        e.page.clean()
-        from client.admin_panel.admin_panel import AdminPanel, SideBar, Content
-        viev = AdminPanel(e)
-        e.page.add(viev.build(side_bar=SideBar(), content=Content(e)))
+        e.page.go("/admin")
+
 
 
     def toggle_elements(self, e):

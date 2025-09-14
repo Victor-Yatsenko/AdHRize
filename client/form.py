@@ -11,7 +11,6 @@ class Form:
             {"key": "title_UA",     "label": "Посада українською"},
             {"key": "title_EN",     "label": "Посада англійською"},
         ]
-
         # self.inputs = {}
 
         self.text = {
