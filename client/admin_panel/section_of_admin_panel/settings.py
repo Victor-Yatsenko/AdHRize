@@ -1,4 +1,6 @@
 import flet as ft
+# from locales.switch_localization import LanguageManager
+# from locales import switch_localization
 
 class Settings:
     def __init__(self):
@@ -28,6 +30,7 @@ class Settings:
         self.language_list = ft.DropdownM2(
             width=200,
             value="English",
+            on_change = self.dropdown_changed,
             options=[
                 ft.dropdownm2.Option("English"),
                 ft.dropdownm2.Option("Українська"),
@@ -59,6 +62,21 @@ class Settings:
     def checkbox_on_change(self, checkbox: ft.Checkbox, fiel: ft.TextField, e: ft.ControlEvent):
         fiel.disabled = not checkbox.value
         fiel.update()
+
+    def dropdown_changed(self, e):
+        language = self.language_list.key
+
+        match language:
+            case "en":
+                return "en"
+            
+            case "ua":
+                return "ua"
+
+            case "Русский":
+                pass
+
+        e.page.update()
 
     
     def teams(self):

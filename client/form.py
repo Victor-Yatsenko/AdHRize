@@ -3,7 +3,7 @@ import requests
 
 class Form:
     def __init__(self):
-        self.title = ft.Text("Новий працівник",    size=50, weight=ft.FontWeight.BOLD)
+        self.title = ft.Text("New employee",    size=50, weight=ft.FontWeight.BOLD)
         self.fields_config = [
             {"key": "full_name_UA", "label": "ПІБ (Кирилицею)"},
             {"key": "full_name_EN", "label": "ПІБ (Латиницею)"},
@@ -18,7 +18,7 @@ class Form:
             for f in self.fields_config
         }
         self.save_btn = ft.ElevatedButton(
-            text="Зберегти",
+            text="Save",
             style = ft.ButtonStyle(text_style=ft.TextStyle(size=24, letter_spacing=5, weight=ft.FontWeight.BOLD),),
             width=200, height=50, color="#000000", bgcolor="#1dc054",
             on_click=self.on_save
@@ -26,7 +26,7 @@ class Form:
 
         self.dept_dpd = ft.DropdownM2(
             width=500,
-            hint_text="Оберіть відділ",
+            hint_text="Select a department",
             options=[
                 ft.dropdownm2.Option("Варіант 1"),
                 ft.dropdownm2.Option("Операційний департамент"),
@@ -36,7 +36,7 @@ class Form:
 
         self.mgr_dpd = ft.DropdownM2(
             width=500,
-            hint_text="Оберіть керівника",
+            hint_text="Select a manager",
             options=[
                 ft.dropdownm2.Option("керівник 1"),
                 ft.dropdownm2.Option("Управління інформаційних технологій"),
@@ -55,8 +55,8 @@ class Form:
                 # self.dept_dpd,
                 # self.mgr_dpd,
                 ft.Container(content=ft.Column(controls=[
-                    self.section(ft.Column(controls=[ft.Text("Відділ:"), self.dept_dpd])),
-                    self.section(ft.Column(controls=[ft.Text("Керівник:"), self.mgr_dpd])),
+                    self.section(ft.Column(controls=[ft.Text("Department:"), self.dept_dpd])),
+                    self.section(ft.Column(controls=[ft.Text("Manager:"), self.mgr_dpd])),
                 ])),
                 
                 ft.Row([self.save_btn], alignment=ft.MainAxisAlignment.CENTER),

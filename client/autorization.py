@@ -1,5 +1,6 @@
 import flet as ft
 from server.config import CLIENT_LOGIN, CLIENT_PASSWORD, ADMIN_LOGIN, ADMIN_PASSWORD
+from locales import switch_localization
 
 
 class Autorization:
@@ -8,14 +9,14 @@ class Autorization:
         self.on_login  = on_login
         self.on_logout = on_logout
 
-        self.login_input    = ft.TextField(label="Введіть логін", width=300)
-        self.password_input = ft.TextField(label="Введіть пароль", password=True, can_reveal_password=True, width=300)
-        self.error_text     = ft.Text("", color="red", visible=False)
-        self.login_btn      = ft.ElevatedButton("Увійти", on_click=self.login_click)
+        self.login_input    = ft.TextField(label=("Enter your login"), width=300)
+        self.password_input = ft.TextField(label="Enter password", password=True, can_reveal_password=True, width=300)
+        self.error_text     = ft.Text("Incorrect login or password!", color="red", visible=False)
+        self.login_btn      = ft.ElevatedButton("Log in", on_click=self.login_click)
 
         self.view = ft.Column(
             [
-                ft.Text("Авторизація", size=24, weight=ft.FontWeight.BOLD),
+                ft.Text(switch_localization._("Authorization"), size=24, weight=ft.FontWeight.BOLD),
                 self.login_input,
                 self.password_input,
                 self.error_text,
@@ -43,6 +44,5 @@ class Autorization:
                 e.page.go("/admin")
 
             case _:
-                self.error_text.value   = "Логин або пароль введено невірно!"
                 self.error_text.visible = True
                 e.page.update()

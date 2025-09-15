@@ -35,21 +35,21 @@ class SideBar(ft.NavigationRail):
                     ft.NavigationRailDestination(
                         icon          = ft.Icon(ft.Icons.DASHBOARD_OUTLINED, color = "#eaeaea"),
                         selected_icon = ft.Icon(ft.Icons.DASHBOARD,          color = "#000000"),
-                        label_content = ft.Text("Головна",                   color = "#eaeaea"),
+                        label_content = ft.Text("Home",                      color = "#eaeaea"),
                     ),
                     ft.NavigationRailDestination(
                         icon          = ft.Icon(ft.Icons.PEOPLE_OUTLINE,     color = "#eaeaea"),
                         selected_icon = ft.Icon(ft.Icons.PEOPLE,             color = "#000000"),
-                        label_content = ft.Text("Користувачі",               color = "#eaeaea"),
+                        label_content = ft.Text("Users",                     color = "#eaeaea"),
                     ),
                     ft.NavigationRailDestination(
                         icon          = ft.Icon(ft.Icons.SETTINGS_OUTLINED,  color = "#eaeaea"),
                         selected_icon = ft.Icon(ft.Icons.SETTINGS,           color = "#000000"),
-                        label_content = ft.Text("Налаштування",              color = "#eaeaea"),
+                        label_content = ft.Text("Settings",                  color = "#eaeaea"),
                     ),
                     ft.NavigationRailDestination(
                         icon          = ft.Icon(ft.Icons.EXIT_TO_APP,        color = "#eaeaea"),
-                        label_content = ft.Text("Вихід",                     color = "#eaeaea"),
+                        label_content = ft.Text("Exit",                      color = "#eaeaea"),
                     ),
                 ],
                 on_change = content.change_content
@@ -69,21 +69,25 @@ class Content:
 
     def change_content(self, e: ft.ControlEvent):
         index = e.control.selected_index
-        if index == 0:
-            self.content_area.content = ft.Column([
-                main_section.main_section.main_section,
-            ])
-        elif index == 1:
-            self.content_area.content = ft.Column([
-                ft.Text("Пользователи", size=25),
-                ft.Switch(label="Включить кого-то")
-            ])
-        elif index == 2:
-            self.content_area.content = ft.Column([
-                settings.settings.settings()
-            ])
-        elif index == 3:
-            e.page.go("/")
-            return
+        match index:
+            case 0:
+                self.content_area.content = ft.Column([
+                    main_section.main_section.main_section,
+                ])
+            
+            case 1:
+                self.content_area.content = ft.Column([
+                    ft.Text("Пользователи", size=25),
+                    ft.Switch(label="Включить кого-то")
+                ])
+
+            case 2:
+                self.content_area.content = ft.Column([
+                    settings.settings.settings()
+                ])
+
+            case 3:
+                e.page.go("/")
+                return
 
         self.content_area.update()

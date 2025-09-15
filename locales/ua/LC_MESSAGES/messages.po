@@ -1,0 +1,77 @@
+msgid "Department"
+msgstr "Відділ"
+
+msgid "Manager"
+msgstr "Керівник"
+
+msgid "Select a manager"
+msgstr "Оберіть керівника"
+
+msgid "Select a department"
+msgstr "Оберіть відділ"
+
+msgid "Save"
+msgstr "Зберегти"
+
+msgid "New employee"
+msgstr "Новий працівник"
+
+msgid "Enter login"
+msgstr "Введіть логін"
+
+msgid "Enter password"
+msgstr "Введіть пароль"
+
+msgid "Log in"
+msgstr "Увійти"
+
+msgid "Authorization"
+msgstr "Авторизація"
+
+msgid "Incorrect login or password!"
+msgstr "Логин або пароль введено невірно!"
+
+msgid "Home"
+msgstr "Головна"
+
+msgid "Users"
+msgstr "Користувачі"
+
+msgid "Settings"
+msgstr "Налаштування"
+
+msgid "Exit"
+msgstr "Вихід"
+
+msgid "Language"
+msgstr "Мова"
+
+msgid "Telegram token"
+msgstr "Телеграм токен"
+
+msgid "Teams webhook"
+msgstr "Тімс вебхук"
+
+msgid "Add  new  form"
+msgstr "Додати  нову  форму"
+
+msgid "Search"
+msgstr "Пошук"
+
+msgid "Back"
+msgstr "Назад"
+
+msgid "Form without a name"
+msgstr "Форма без назви"
+
+msgid "Add element"
+msgstr "Додати елемент"
+
+msgid "Select"
+msgstr "Вибір"
+
+msgid "Text"
+msgstr "Текст"
+
+msgid "Date"
+msgstr "Дата"

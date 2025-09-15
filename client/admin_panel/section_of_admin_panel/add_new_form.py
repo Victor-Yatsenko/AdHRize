@@ -10,7 +10,7 @@ class AddNewForm:
                 content=ft.Row(
                     controls=[
                         ft.Icon(name=ft.Icons.ARROW_BACK, color=ft.Colors.WHITE, size=30),
-                        ft.Text("Назад", size=20),
+                        ft.Text("Back", size=20),
                     ],
                     alignment=ft.MainAxisAlignment.START
                 ),
@@ -25,11 +25,11 @@ class AddNewForm:
             border=ft.InputBorder.NONE,
             filled=True,
             # Потом сделать так hint_text=_("Форма без назви"), для перевода 
-            hint_text="Форма без назви",
+            hint_text="Form without a name",
         )
 
         self.start_add_element_button = ft.TextButton(
-            text="Додати елемент",
+            text="Add element",
             icon=ft.Icons.ADD_CIRCLE,
             on_click=self.toggle_elements
             
@@ -42,19 +42,19 @@ class AddNewForm:
             segments=[
                 ft.Segment(
                     value="1",
-                    label=ft.Text("Вибір"),
+                    label=ft.Text("Select"),
                     icon=ft.Icon(ft.Icons.CHECK_CIRCLE)
                 ),
                 ft.Segment(
                     # value=self.add_elements(index=0),
                     value="2",
-                    label=ft.Text("Текст"),
+                    label=ft.Text("Text"),
                     icon=ft.Icon(ft.Icons.TEXT_FIELDS),
                     
                 ),
                 ft.Segment(
                     value="3",
-                    label=ft.Text("Дата"),
+                    label=ft.Text("Date"),
                     icon=ft.Icon(ft.Icons.CALENDAR_MONTH)
                 ),
             ],

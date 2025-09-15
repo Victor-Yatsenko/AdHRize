@@ -17,7 +17,7 @@ class MainSection:
                 on_click=self.click_add_new_form_button
             ),
         )
-        self.field_search_form = ft.TextField(label="Пошук", width=500)
+        self.field_search_form = ft.TextField(label="Search", width=500)
 
 
         self.main_section = ft.Container(
