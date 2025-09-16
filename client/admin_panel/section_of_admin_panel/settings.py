@@ -1,6 +1,6 @@
 import flet as ft
-# from locales.switch_localization import LanguageManager
-# from locales import switch_localization
+from locales import switch_localization
+from client.admin_panel import admin_panel
 
 class Settings:
     def __init__(self):
@@ -14,8 +14,7 @@ class Settings:
         )
         self.teams_url = ft.TextField(label="", width=800,  disabled= True)
 
-
-        self.telegram_checkbox = ft.Checkbox(label="Telegram token", 
+        self.telegram_checkbox = ft.Checkbox(label=("Telegram token"), 
             splash_radius=10,
             label_position=ft.LabelPosition.LEFT,
             active_color="#000000",
@@ -26,16 +25,17 @@ class Settings:
         self.telegram_token = ft.TextField(label="", width=800, disabled= True)
 
 
-        self.language_text = ft.Text("Language", size=20)
-        self.language_list = ft.DropdownM2(
+        self.language_text = ft.Text((switch_localization._("Language")), size=20)
+        self.language_list = ft.Dropdown(
             width=200,
-            value="English",
+            value = "English",
             on_change = self.dropdown_changed,
             options=[
-                ft.dropdownm2.Option("English"),
-                ft.dropdownm2.Option("Українська"),
-                ft.dropdownm2.Option("Русский"),
-            ]
+                ft.dropdown.Option(key = "English"),
+                ft.dropdown.Option(key = "Українська"),
+                ft.dropdown.Option(key = "Русский"),
+            ],
+            
         )
 
 
@@ -64,18 +64,22 @@ class Settings:
         fiel.update()
 
     def dropdown_changed(self, e):
-        language = self.language_list.key
+        # language = self.language_list.key
+        value = e.control.value
 
-        match language:
-            case "en":
-                return "en"
+        match value:
+            case "English":
+                switch_localization.set_language("en")
             
-            case "ua":
-                return "ua"
+            case "Українська":
+                switch_localization.set_language("ua")
 
             case "Русский":
-                pass
+                switch_localization.set_language("ru")
 
+        # self.language_text.value = switch_localization._("Language")
+        e.page.on_route_change = settings
+        
         e.page.update()
 
     

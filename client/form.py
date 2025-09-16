@@ -24,23 +24,23 @@ class Form:
             on_click=self.on_save
         )
 
-        self.dept_dpd = ft.DropdownM2(
+        self.dept_dpd = ft.Dropdown(
             width=500,
             hint_text="Select a department",
             options=[
-                ft.dropdownm2.Option("Варіант 1"),
-                ft.dropdownm2.Option("Операційний департамент"),
-                ft.dropdownm2.Option("Варіант 3"),
+                ft.dropdown.Option("Варіант 1"),
+                ft.dropdown.Option("Операційний департамент"),
+                ft.dropdown.Option("Варіант 3"),
             ]
         )
 
-        self.mgr_dpd = ft.DropdownM2(
+        self.mgr_dpd = ft.Dropdown(
             width=500,
             hint_text="Select a manager",
             options=[
-                ft.dropdownm2.Option("керівник 1"),
-                ft.dropdownm2.Option("Управління інформаційних технологій"),
-                ft.dropdownm2.Option("керівник 1")
+                ft.dropdown.Option("керівник 1"),
+                ft.dropdown.Option("Управління інформаційних технологій"),
+                ft.dropdown.Option("керівник 1")
             ]
         )
 

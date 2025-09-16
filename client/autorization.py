@@ -8,7 +8,6 @@ class Autorization:
         self.page      = page
         self.on_login  = on_login
         self.on_logout = on_logout
-
         self.login_input    = ft.TextField(label=("Enter your login"), width=300)
         self.password_input = ft.TextField(label="Enter password", password=True, can_reveal_password=True, width=300)
         self.error_text     = ft.Text("Incorrect login or password!", color="red", visible=False)

@@ -1,6 +1,7 @@
 import flet as ft
 from .section_of_admin_panel import settings
 from client.admin_panel.section_of_admin_panel import main_section
+from locales import switch_localization
 
 
 class AdminPanel:
@@ -83,6 +84,7 @@ class Content:
 
             case 2:
                 self.content_area.content = ft.Column([
+                    
                     settings.settings.settings()
                 ])
 

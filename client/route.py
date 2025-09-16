@@ -21,6 +21,7 @@ def route_change(e: ft.RouteChangeEvent):
             side_bar = admin_panel.SideBar()
             content  = admin_panel.Content(e.page)
             e.page.add(panel.build(side_bar, content))
+            
 
         case "/admin/add_new_form":
             viev = add_new_form.AddNewForm(e.page)
