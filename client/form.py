@@ -3,7 +3,7 @@ import requests
 
 class Form:
     def __init__(self):
-        self.title = ft.Text("New employee",    size=50, weight=ft.FontWeight.BOLD)
+        self.title = ft.Text("New employee", size=50, weight=ft.FontWeight.BOLD)
         self.fields_config = [
             {"key": "full_name_UA", "label": "ПІБ (Кирилицею)"},
             {"key": "full_name_EN", "label": "ПІБ (Латиницею)"},

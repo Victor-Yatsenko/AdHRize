@@ -1,7 +1,8 @@
 import flet as ft
-from .section_of_admin_panel import settings
+# from .section_of_admin_panel import settings
+from client.admin_panel.section_of_admin_panel.settings import Settings
 from client.admin_panel.section_of_admin_panel import main_section
-from locales import switch_localization
+from locales import switch_localization as sl
 
 
 class AdminPanel:
@@ -9,7 +10,7 @@ class AdminPanel:
         self.page = page
         self.on_login = on_login
 
-    def build(self, side_bar: "SideBar", content: "Content"):
+    def build(self, side_bar: "SideBar", content: "Content", settings = None):
         return ft.Row(
             expand=True,
             controls=[
@@ -19,7 +20,8 @@ class AdminPanel:
         )
 
 class SideBar(ft.NavigationRail):
-    def __init__(self, ):
+    def __init__(self, page = None):
+        self.page = page
         super().__init__()
 
     def side_bar(self, content: "Content"):
@@ -36,21 +38,21 @@ class SideBar(ft.NavigationRail):
                     ft.NavigationRailDestination(
                         icon          = ft.Icon(ft.Icons.DASHBOARD_OUTLINED, color = "#eaeaea"),
                         selected_icon = ft.Icon(ft.Icons.DASHBOARD,          color = "#000000"),
-                        label_content = ft.Text("Home",                      color = "#eaeaea"),
+                        label_content = ft.Text(sl._("Home"),                color = "#eaeaea"),
                     ),
                     ft.NavigationRailDestination(
                         icon          = ft.Icon(ft.Icons.PEOPLE_OUTLINE,     color = "#eaeaea"),
                         selected_icon = ft.Icon(ft.Icons.PEOPLE,             color = "#000000"),
-                        label_content = ft.Text("Users",                     color = "#eaeaea"),
+                        label_content = ft.Text(sl._("Users"),               color = "#eaeaea"),
                     ),
                     ft.NavigationRailDestination(
                         icon          = ft.Icon(ft.Icons.SETTINGS_OUTLINED,  color = "#eaeaea"),
                         selected_icon = ft.Icon(ft.Icons.SETTINGS,           color = "#000000"),
-                        label_content = ft.Text("Settings",                  color = "#eaeaea"),
+                        label_content = ft.Text(sl._("Settings"),            color = "#eaeaea"),
                     ),
                     ft.NavigationRailDestination(
                         icon          = ft.Icon(ft.Icons.EXIT_TO_APP,        color = "#eaeaea"),
-                        label_content = ft.Text("Exit",                      color = "#eaeaea"),
+                        label_content = ft.Text(sl._("Exit"),                color = "#eaeaea"),
                     ),
                 ],
                 on_change = content.change_content
@@ -83,9 +85,11 @@ class Content:
                 ])
 
             case 2:
+                settings = Settings()
                 self.content_area.content = ft.Column([
-                    
-                    settings.settings.settings()
+                    # settings.settings()
+                    settings.settings()
+                    # settings.settings.settings()
                 ])
 
             case 3:

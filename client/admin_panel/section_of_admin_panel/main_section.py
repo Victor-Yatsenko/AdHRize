@@ -8,7 +8,7 @@ class MainSection:
                 content=ft.Row(
                     controls=[
                         ft.Icon(name=ft.Icons.ASSIGNMENT_ADD, color=ft.Colors.WHITE, size=30),
-                        ft.Text("Add  new  form", size=20),
+                        ft.Text("Add new form", size=20),
                     ],
                     alignment=ft.MainAxisAlignment.CENTER
                 ),
